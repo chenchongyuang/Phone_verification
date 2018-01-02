@@ -20,5 +20,13 @@ app.use(express.static(__basename +'/img'));
 
 Router.router(app);
 
+app.use((req,res) => {
+	res.status(404);
+	res.send('页面找不到');
+})
+app.use((err,req,res) => {
+	res.status(500);
+	res.send('服务器发生错误');
+})
 app.listen(config.server.port);
 
